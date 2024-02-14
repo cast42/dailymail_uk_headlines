@@ -13,17 +13,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-
       - name: checkout repo content
         uses: actions/checkout@v4 # checkout the repository content to github runner
 
-      - name: Set up Python 3.12
-        uses: actions/setup-python@v5
+      - name: get the headlines and append to jsonl file
+        uses: prefix-dev/setup-pixi@v0.2.0
         with:
-          python-version: "3.12"
-
-      - name: execute py script # run main.py
-        run: python append_headlines.py
+            cache: true
+        run: pixi run python append_headlines.py
           
       - name: commit files
         run: |
@@ -31,7 +28,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add -A
-          git diff-index --quiet HEAD || (git commit -a -m "updated logs" --allow-empty)
+          git diff-index --quiet HEAD || (git commit -a -m "updated headlines" --allow-empty)
           
       - name: push changes
         uses: ad-m/github-push-action@master
