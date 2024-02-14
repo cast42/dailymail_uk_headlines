@@ -9,3 +9,5 @@ platforms = ["osx-64"]
 [tasks]
 
 [dependencies]
+beautifulsoup4 = ">=4.12.3,<4.13"
+requests = ">=2.31.0,<2.32"

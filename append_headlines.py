@@ -27,9 +27,6 @@ if response.status_code == 200:
         "h2", class_="linkro-darkred"
     )  # This is a placeholder class; adjust it based on actual website structure
 
-    # Print each headline title
-    for headline in headlines:
-        print(headline.text.strip())
 else:
     print("Failed to retrieve the webpage")
     sys.exit(0)
