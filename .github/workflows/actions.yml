@@ -20,7 +20,7 @@ jobs:
         uses: prefix-dev/setup-pixi@v0.2.0
         with:
             cache: true
-        run: pixi run python append_headlines.py
+      - run: pixi run python append_headlines.py
           
       - name: commit files
         run: |
