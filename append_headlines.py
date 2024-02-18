@@ -6,8 +6,9 @@ import json
 from datetime import datetime, timezone
 
 
-def add_space_after_EXCLUSIVE(title: str) -> str:
-    return re.sub(r"^EXCLUSIVE", r"EXCLUSIVE ", title)
+def add_space_after(title: str) -> str:
+    pattern = r"(^EXCLUSIVE|^BREAKING NEWS)"
+    return re.sub(pattern, r"\1 ", title)
 
 
 # URL of the website you want to scrape
@@ -39,7 +40,7 @@ iso_8601_string = now.isoformat()
 
 headlines_dict = {"timestamp": iso_8601_string}
 headlines_dict["titles"] = [
-    add_space_after_EXCLUSIVE(headline.text.strip()) for headline in headlines
+    add_space_after(headline.text.strip()) for headline in headlines
 ]
 
 with open("daily_mail_headlines.jsonl", "a", encoding="utf-8") as f:
