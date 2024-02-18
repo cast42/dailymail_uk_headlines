@@ -2,7 +2,7 @@ name: run append_headlines.py
 
 on:
   schedule:
-    - cron: '* 17 * * *' # Every day at 5 pm
+    - cron: '42 16 * * *' # Every day at 16:42 pm
   workflow_dispatch:
   # push:
   #   branches: [ "main" ]
